@@ -1,0 +1,73 @@
+<!-- <div class="login-wrapper">
+  <mat-card class="mat-card-dimension">
+      <mat-card-header>Sign Up</mat-card-header>
+    <form [formGroup]='signUpForm' (ngSubmit)='PostFormDate(signUpForm)' class="example-form">
+      <mat-form-field [ngClass]="{'has-error': !signUpForm.controls['fName'].valid}">
+        <input matInput formControlName='fName' placeholder="Your first name">        
+      </mat-form-field><br>
+      <mat-form-field [ngClass]="{'has-error': !signUpForm.controls['lName'].valid}">
+        <input matInput formControlName='lName' placeholder="Your last name">
+      </mat-form-field><br>
+      <mat-form-field [ngClass]="{'has-error': !signUpForm.controls['email'].valid}">
+        <input type='email' matInput formControlName='email' placeholder="Your email">
+      </mat-form-field><br>
+      <mat-form-field [ngClass]="{'has-error': !signUpForm.controls['password'].valid}">
+        <input type='password' matInput formControlName='password' placeholder="Your password">
+      </mat-form-field> <br>
+      <button type='submit' [disabled]='!signUpForm.valid' class="btn btn-success">Sign up</button>
+     
+    </form>
+  </mat-card>
+</div> -->
+
+<div class="mat-card-dimension">
+  <form [formGroup]='signUpForm' (ngSubmit)='PostFormDate(signUpForm)'>
+    <div class="form-container">    
+        <div>
+          <input type="text" formControlName='fName' placeholder="Your first name">
+          <div *ngIf='signUpForm.controls["fName"].touched && !signUpForm.controls["fName"].valid'>
+            <span *ngIf='signUpForm.controls["fName"].hasError("required")'>
+              First name is required
+            </span>
+            <span *ngIf='signUpForm.controls["fName"].hasError("maxlength")'> 
+              max length is 15  
+            </span>
+            <span *ngIf='signUpForm.controls["fName"].hasError("minlength")'>
+              cannot be less than 5 character
+            </span>
+          </div>
+        </div>
+        <div>
+          <br><input type="text" formControlName='lName' placeholder="Your last name">
+          <div *ngIf="signUpForm.controls['lName'].touched && !signUpForm.controls['lName'].valid">
+              <span *ngIf='signUpForm.controls["lName"].hasError("required")'>
+                Last name is required
+              </span>
+              <span *ngIf='signUpForm.controls["lName"].hasError("maxlength")'> 
+                max length is 15  
+              </span>
+              <span *ngIf='signUpForm.controls["lName"].hasError("minlength")'>
+                cannot be less than 5 character
+              </span>
+            </div>
+        </div>
+        <div>
+          <br><input type="email" formControlName='email' placeholder="Your email">
+          <div *ngIf="signUpForm.controls['email'].touched && !signUpForm.controls['email'].valid">  
+              <span *ngIf="signUpForm.controls['email'].hasError('required') ">  
+                Email ID is needed  
+              </span>  
+              <span *ngIf="signUpForm.controls['email'].hasError('email') ">  
+                Invalid Email ID  
+              </span>  
+          </div>
+        </div>
+        <div>
+          <br><input type="password" formControlName='password' placeholder="Your password">
+        </div>
+        <div>
+          <br><input type="submit" value='Post Data' [disabled]='!signUpForm.valid'>
+        </div>
+    </div>
+  </form>
+</div>
